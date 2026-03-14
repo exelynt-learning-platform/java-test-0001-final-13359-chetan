@@ -1,53 +1,45 @@
 public class Main {
-    public static void main(String[] args) {
 
-        int n = 5;
-      
-        //loop for upper part
-        for (int i = 1; i <= n; i++) {
+    // Method to print one row of the hollow diamond
+    public static void printRow(int n, int i, boolean upper) {
 
-            // loop for spaces
+        // spaces
+        if (upper) {
             for (int j = i; j < n; j++) {
                 System.out.print(" ");
             }
-
-            //print first star
-            System.out.print("*");
-
-            // loop for hollow space
-            if (i > 1) {
-                for (int j = 1; j <= (2 * i - 3); j++) {
-                    System.out.print(" ");
-                }
-
-                // print second star
-                System.out.print("*");
-            }
-
-            System.out.println();
-        }
-
-        // loop for Lower part
-        for (int i = n - 1; i >= 1; i--) {
-
-            //loop for spaces
+        } else {
             for (int j = n; j > i; j--) {
                 System.out.print(" ");
             }
+        }
 
-            // print first star
-            System.out.print("*");
+        // first star
+        System.out.print("*");
 
-            if (i > 1) {
-                for (int j = 1; j <= (2 * i - 3); j++) {
-                    System.out.print(" ");
-                }
-
-                // print second star
-                System.out.print("*");
+        // hollow spaces and second star
+        if (i > 1) {
+            for (int j = 1; j <= (2 * i - 3); j++) {
+                System.out.print(" ");
             }
+            System.out.print("*");
+        }
 
-            System.out.println();
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+
+        int n = 5;
+
+        // upper part
+        for (int i = 1; i <= n; i++) {
+            printRow(n, i, true);
+        }
+
+        // lower part
+        for (int i = n - 1; i >= 1; i--) {
+            printRow(n, i, false);
         }
     }
 }
